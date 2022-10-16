@@ -1,2 +1,2 @@
 # infinity-scroll
-[Voir le site](https://sapinsobre.github.io/infinity-scroll)
+[Go to the site](https://sapinsobre.github.io/infinity-scroll)
