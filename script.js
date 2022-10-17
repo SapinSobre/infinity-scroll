@@ -14,30 +14,28 @@ function setAttribute(element, attributes) {
 }
 
 function displayPhotos() {
+    // Création de l'élément html et de ses attributs
     photosTab.forEach((photo) => {
         const item = document.createElement('a');
         setAttribute(item, {
             href: photo.links.html,
             target: '_blank'
         });
-        //item.setAttribute('href', photo.links.html);
-        //item.setAttribute('target', 'blank');
+        
         const image = document.createElement('img');
         setAttribute(image, {
             src: photo.urls.regular,
-            alt: "loading...",
-            title: "photo"
+            alt: `${photo.user.name}'s photo`,
+            title: photo.user.name
         })
-        //image.setAttribute('src', photo.urls.regular);
-        //image.setAttribute('alt', photo.alt_description);
-        //image.setAttribute('title', photo.alt_description);
+
+        // Ajout de la photo dans le lien et du lien dans le container
         item.appendChild(image);
         photosContainer.appendChild(item);
     });
 }
 
-// fetch photos from Unsplash
-async function getPhotos() {
+async function getPhotosFromUnsplash() {
     try{
         const response = await fetch(apiUrl);
         photosTab = await response.json();
@@ -49,4 +47,4 @@ async function getPhotos() {
 }
 
 // On load
-getPhotos();
+getPhotosFromUnsplash();
